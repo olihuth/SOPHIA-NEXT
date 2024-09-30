@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - S.O.P.H.I.A.</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_antigo.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil-styles.css') }}">
+
+
+</head>
+<body>
+    <a href="/dashboard/" >
+        <button class="arrow"><i class="fa-solid fa-arrow-left-long"></i></button>
+    </a>
+    <div class="perfil">
+        <div class="ftperfil">
+            <img src="{{ url_for('static', filename='img/logo-color.png') }}" alt="Sua foto de perfil">
+        </div>
+        <button popovertarget="editPerfil"><i class="fa fa-pencil"></i></button>
+        <div class="dadosPerfil">
+            <h3>Nome:</h3>
+            <p>Admin</p>
+            <h3>Nome de Usuário:</h3>
+            <p>Admin</p>
+            <h3>Email:</h3>
+            <p>admin@sophia.com</p>
+            <h3>Senha:</h3>
+            <p>********</p>
+        </div>
+    </div>
+    
+    <div popover id="editPerfil">
+        <div class="stylePopUp">
+            <div class="exitPopUp">
+                <button popovertarget="editPerfil" popovertargetaction="hide" onclick="resetEditPerfilForm()">x</button>    
+            </div>
+            <div class="form">
+                <form id="editPerfilForm">
+                    <div class="input">
+                        <label for="nomeUsuario">Nome:</label>
+                        <input type="text" placeholder="Sophia Rasmussen" id="nomeUsuario">
+                    </div>
+                    <div class="input">
+                        <label for="userName">Nome de Usuário:</label>
+                        <input type="text" placeholder="Sophia123" id="userName"> 
+                    </div>
+                    <div class="input">
+                        <label for="emailUsuario">Email:</label>
+                        <input type="text" placeholder="sophia.ia@sophia.com" id="emailUsuario">   
+                    </div>
+                    <div class="input">
+                        <label for="senhaUsuarioAntiga">Senha antiga:</label>
+                        <input type="password" id="senhaUsuarioAntiga">   
+                    </div>
+                    <div class="input">
+                        <label for="novaSenhaUsuario">Nova Senha:</label>
+                        <input type="password" id="novaSenhaUsuario">
+                    </div>
+                    <div class="input">
+                        <label for="confirmSenhaUsuario">Confirme a senha:</label>
+                        <input type="password" id="confirmSenhaUsuario">
+                    </div>  
+                </form>
+            </div>
+            <div class="submitBtn">
+                <button type="submit" form="editPerfilForm" popovertarget="editPerfil" popovertargetaction="hide">Salvar</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

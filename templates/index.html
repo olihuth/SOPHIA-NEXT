@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - S.O.P.H.I.A.</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./static/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap">
+</head>
+<body>
+    <div class="container">
+        <div id="bannerCarousel" class=" carousel slide banner-container" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#bannerCarousel" data-slide-to="1"></li>
+            </ol>
+            <!--Imagens do Carrossel-->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./static/img/Banner 1.png" class="d-block w-100" alt="Imagem 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./static/img/Banner 2.png" class="d-block w-100" alt="Imagem 2">
+                </div>
+            </div>
+            <!--Setas de Navegação-->
+            <a class="carousel-control-prev" href="#bannerCarousel" role="buton" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#bannerCarousel" role="buton" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+        </div>
+        <div class="tutorial-container">
+            <div class="tutorial-container1">
+                <h4>SELECIONE O PROJETO</h4>
+                <p>Escolha o projeto que deseja visualizar na lista disponível!</p>
+                <img src="./static/img/list_781098.png" alt="AQUI AQUI AQUI">
+            </div>
+            <div class="tutorial-container2">
+                <h4>VISUALIZE A ANÁLISE DE DADOS</h4>
+                <p>O painel apresentará dashboards interativos com as principais métricas e informações relevantes do projeto selecionado.</p>
+                <img src="./static/img/dashboard_10397171.png">
+            </div>
+            <div class="tutorial-container3">
+                <h4>EXPLORE PAINÉIS INTERATIVOS</h4>
+                <p>Navegue para obter insights detalhados sobre o desempenho e resultados.</p> 
+                <img src="./static/img/search_7928577.png">
+            </div>
+            <div class="tutorial-container4">
+                <h4>SOLICITE UMA ANÁLISE PREDITIVA</h4>
+                <p>Utilize a S.H.O.P.I.A. para gerar uma análise preditiva que ajudará na tomada de decisões estratégicas para futuros projetos.</p>
+                <img src="./static/img/logo-color.png">
+            </div>
+        </div>
+        <div class="login-container">
+            <div class="logo">
+                <img src="./static/img/logo-no-background.svg" alt="Logo SOPHIA colorido">
+            </div>
+            <div class="login-box">
+                <form class="login-form" action="/dashboard/" method="GET">
+                    <input type="text" placeholder="Usuário" name="login" required>
+                    <input type="password" placeholder="Senha" name="password" required>
+                    <button type="submit">Entrar</button>
+                </form>
+                <div class="esqueci-senha">
+                    <button popovertarget="redefinirSenha">Esqueci minha senha</button>
+                </div>
+                
+                <div popover id="redefinirSenha">
+                    <div class="stylePopUpSenha">
+                        <div class="exitPopUpSenha">
+                            <button popovertarget="redefinirSenha" popovertargetaction="hide" onclick="resetSenhaForm()">x</button>
+                        </div>
+                        <div class="formSenha">
+                            <form id="redefinirSenhaForm">
+                                <div class="input">
+                                    <label for="email">Receba uma nova senha</label>
+                                    <input type="text" placeholder="Digite o seu E-mail" id="E-mail Usuário" required>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="submitBtn">
+                            <button type="submit" form="redefinirSenhaForm"
+                            popovertarget="senhaRedefinida">Solicitar</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+Arquivo TXT: crie um arquivo de texto (.txt) nomeado como Instruções.txt, contendo as seguintes informações:
+
+S.O.P.H.I.A.
+    	
+Isabelle Beatriz Dias Bandeira		
+Juliana Alves		
+Oliver Freire Huth		
+Saul Henrique Araujo Vasconcelos Andrade
+    
+1-Descompactar o ZIP
+2-Instalar todos as bibliotecas Python que estão no arquivo requirements.txt (de preferência em um ambiente virtual)
+3-Rodar arquivo app.py
+4-Abrir servidor local no navegador
+
+
+   

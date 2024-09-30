@@ -1,0 +1,144 @@
+/*
+Cores da logo:
+roxo: #645af0
+ciano: #6eddf5
+branco(body): #f4f4f4
+cinza: #333
+branco: #fff
+azul-escuro: #336dc3
+azul-claro: #3a84f4
+azul quase branco: #e8ebf0
+quase preto: #2b2f3a
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans',Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* MENU */
+header {
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #645af0;
+}
+
+.perfilHeader {
+    display: flex;
+    align-items: center;
+}
+
+.perfil-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: small;
+    margin-right: 20px;
+}
+
+.usernameHeader{
+    font-style: italic;
+}
+
+.perfil-link span {
+    margin-right: 10px;
+}
+
+.avatar {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%;
+    /* border: 1px solid #333; */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.botao-sair {
+    background-color: #3a84f4;
+    color: #fff;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+}
+
+.botao-sair:hover {
+    background-color: #336dc3;
+}
+
+/* FIM MENU */
+
+main {
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    clear: both;
+}
+

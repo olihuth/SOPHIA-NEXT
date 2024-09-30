@@ -1,0 +1,138 @@
+/* PERFIL */
+.perfil{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    /*border: 3px solid red;*/
+}
+
+.perfil button{
+    border: none;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    font-size:20px;
+    color: #333;
+    background-color: #f4f4f4;
+    cursor: pointer;
+    margin-top: -30px;
+    margin-left: 150px;
+}
+
+.ftperfil img{
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover;
+    border-radius: 100%;
+    margin-top: 5px;
+    margin: 0 15px;
+}
+
+#editPerfil{
+    width: 30%;
+    height: 60%;
+    align-self: center;
+    justify-self: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+
+    border: 2px solid #ddd;
+    border-radius: 5%;
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+}
+
+.stylePopUp{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    justify-content: space-around;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-weight: bold;
+    font-size: large;
+}
+
+.exitPopUp{
+    align-self: flex-end;
+}
+
+.exitPopUp button{
+    width: 150%;
+    border: none;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-weight: bold;
+    font-size: large;
+    background-color: white;
+    transition: color 0.3s ease;
+}
+
+.exitPopUp button:hover{
+    color: #336dc3;
+    cursor: pointer;
+}
+
+.form{
+    /* display: flex; */
+    align-content: center;
+    flex-direction: column;
+}
+
+.form input{
+    width: 50%;
+    height: 25px;
+    align-self: center;
+    border-radius: 3px;
+    /* border: none; */
+    border: 0.5px solid #ddd;
+    padding: 5px;
+}
+
+.input{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.submitBtn{
+    align-self: center;
+    width: 100%;
+    margin-top: 7%;
+}
+
+.submitBtn button{
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-weight: bold;
+    font-size: large;
+    transition: background-color 0.3s ease;
+}
+
+.submitBtn button:hover{
+    background-color: #336dc3;
+    color: #f4f4f4;
+    cursor: pointer;
+}
+
+.arrow {
+    background-color: #f4f4f4;
+    border: none;
+    font-size: 35px;
+    cursor: pointer;
+    color: #0B2D4B;
+    margin: 10px;
+    transition: color 0.5s ease;
+}
+
+.arrow :hover {
+    color: #336dc3;
+}
+
+  /* FIM PERFIL */

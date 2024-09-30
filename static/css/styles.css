@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+     font-family: 'Josefin Sans'; /*possível problema de fonte*/
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #fff;
+    overflow: auto;
+    margin: 0;
+    background-color: #191643;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    max-width: 1920px;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+
+}
+
+.banner-container{
+
+    height: 100%;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.banner-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-indicators li{
+    background-color: #999;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.carousel-indicators .active{
+    background-color: #6459F0;
+}
+
+.carousel-control-prev,
+.carousel-control-next{
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+    padding: 15px;
+    border-radius: 50%;
+}
+
+
+.tutorial-container{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    height: 100vh;
+    width: 100%;
+    color: #000000;
+}
+
+
+.login-container {
+
+    background-color: #0B2D4B;
+    padding: 40px;
+    text-align: center;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+    height:100vh;
+    width: 26vw;
+    overflow: hidden;
+    position: fixed;  /* problema do login no lado errado*/
+    top: 0;
+    right: 0;
+    margin: 0;
+}
+
+.login-box{
+    padding: 40px;
+}
+
+.logo img {
+    width: 100%;
+    max-width: 300px;
+    margin: 140px 0px 50px 0px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 2px 0;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #6459F0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    color: #000000;
+}
+
+input::placeholder {
+    color: #000000;
+    opacity: 0.6;
+    font-size: 14px;
+}
+
+.login-form button:hover {
+    background-color: #6459F0;
+    transform: scale(1.05);
+}
+
+.senha-form button{
+    background:none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s;
+}
+
+.senha-form button:hover{
+        transform: scale(1.02);
+    }
+
+.tutorial-container{
+    height: 100vh;
+    text-align: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.tutorial-container div{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+.tutorial-container h4{
+    font-size: 38px;
+    text-align: center;
+    color: white;
+}
+
+.tutorial-container p{
+    width: 100%;
+    max-width: 500PX;
+    font-size: 28px;
+    color: white;
+}
+
+.tutorial-container2 p{
+    margin-left: 70px;
+}
+
+.tutorial-container3 p{
+    margin-left: 45px;
+}
+
+.tutorial-container4 p{
+    margin-left: 85px;
+}
+
+.tutorial-container1 img{
+    margin-left: 80px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.tutorial-container2 img{
+    margin-top: 40px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.tutorial-container3 img{
+    margin-top: 40px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.tutorial-container4 img{
+    margin-left: 20px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: none;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+}
+
+#redefinirSenha{
+    align-self: center;
+    width: 30%;
+    height: 15%;
+    align-items: center;
+    justify-self: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+}
+
+.stylePopUpSenha{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    justify-content: space-around;
+    font-family: 'Josefin Sans';
+    color: #333;
+    font-weight: bold;
+    font-size: large;
+}
+
+.exitPopUpSenha{
+    align-self: flex-end;
+}
+
+.exitPopUpSenha button{
+    width: 100%;
+    border: none;
+    font-family: 'Josefin Sans';
+    color: #333;
+    font-weight: bold;
+    font-size: large;
+    background-color: white;
+    transition: color 0.3s ease;
+}
+
+.exitPopUpSenha button:hover{
+    color: #336dc3;
+    cursor: pointer;
+}
+
+.formSenha{
+    /* display: flex; */
+    align-content: center;
+    flex-direction: column;
+}
+
+.formSenha input{
+    width: 55%;
+    height: 30px;
+    align-self: center;
+    border-radius: 3px;
+    /* border: none; */
+    border: 0.5px solid #ddd;
+    padding: 5px;
+}
+
+.input{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.submitBtn{
+    align-self: center;
+    width: 50%;
+    margin-top: 2%;
+}
+
+.submitBtn button{
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    font-family: 'Josefin Sans';
+    background-color: #6459F0;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    transition: transform 0.3s ease;
+}
+
+.submitBtn button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.esqueci-senha button{
+    background-color: #0B2D4B;
+    color: white;
+    border: none;
+}
