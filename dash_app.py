@@ -24,7 +24,6 @@ def init_dashboard(server):
     df_barra4 = pd.read_csv("./dados/Consultores x Complexidade de Atendimentos.csv")
     df_barra5 = pd.read_csv("./dados/Atendimentos ao Longo do Tempo.csv")
     df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo com projecao.csv")
-    df_linha2 = pd.read_csv("./dados/ProjecaoAbril.csv")
     df_barra6 = pd.read_csv("./dados/Atendimento x Senioridade.csv")
     df_barra7 = pd.read_csv("./dados/Atendimento_x_Senioridade_PREVISAO.csv")
     df_barra8 = pd.read_csv("./dados/Equipe por projeto.csv")
@@ -120,24 +119,6 @@ def init_dashboard(server):
     )
     barra5.update_layout(title_x=0.5)
 
-    # linha = px.line(
-    #     df_linha,
-    #     x="DATA",
-    #     y="CUSTO",
-    #     title="Custo dos Atendimentos ao Longo do Tempo",
-    # )
-    # linha.update_layout(title_x=0.5)
-    # linha.update_traces(line_color='#a80000')
-
-    linha2 = px.line(
-        df_linha2,
-        x="DATA",
-        y="CUSTO",
-        title="Projeção do Custo dos Atendimentos de Abril",
-    )
-    linha2.update_layout(title_x=0.5)
-    linha2.update_traces(line_color='#AB9EAA')
-
     linha = px.line(
         df_linha,
         x="DATA",
@@ -193,9 +174,9 @@ def init_dashboard(server):
                         'Expert': '#000024'
         },
         title="Equipe por Projeto"
-        #text_auto=True
     )
     barra8.update_layout(title_x=0.5)
+    barra8.update_layout(plot_bgcolor="white")
 
     # Criação das Divs de cada Gráfico
     div_pizza = html.Div([dcc.Graph(id='pizza', figure=pizza)])
@@ -205,7 +186,6 @@ def init_dashboard(server):
     div_barra4 = html.Div([dcc.Graph(id='barra4', figure=barra4)])
     div_barra5 = html.Div([dcc.Graph(id='barra5', figure=barra5)])
     div_linha = html.Div([dcc.Graph(id='linha', figure=linha)])
-    div_linha2 = html.Div([dcc.Graph(id='linha2', figure=linha2)])
     div_barra6 = html.Div([dcc.Graph(id='barra6', figure=barra6)])
     div_barra7 = html.Div([dcc.Graph(id='barra7', figure=barra7)])
     div_barra8 = html.Div([dcc.Graph(id='barra8', figure=barra8)])
@@ -364,24 +344,13 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-5", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "O gráfico Custos ao Longo do Tempo revela variações significativas nos gastos. No Projeto 1-Funcional, os custos aumentaram de 1.330 a 2.275 durante o mês de janeiro a março, evidenciando um crescimento contínuo. Por outro lado, o Projeto 1-Basis apresenta custos mais baixos, com flutuações que vão de 6 a 242, indicando um padrão de gastos menos consistente. O Projeto 2-Funcional, por sua vez, também apresenta custos crescentes, atingindo 2.208, o que sugere um aumento na demanda ou complexidade dos serviços prestados ao longo do período analisado.",
+                            "O gráfico Custo ao Longo do Tempo mostra variações nos gastos dos projetos, com o Projeto 1-Funcional aumentando de 1.330 para 2.275 entre janeiro e março, enquanto o Projeto 1-Basis variou entre 6 e 242, mostrando menor consistência. O Projeto 2-Funcional também teve crescimento, alcançando 2.208. Em abril de 2024, a previsão indica distribuição desigual de recursos, com valores totais entre R$ 5.691,80 e R$ 10.417,90, e custos por hora de R$ 71,69 a R$ 92,01, sugerindo diferenças de senioridade e a necessidade de otimizar a alocação.",
                             target="icon-5",
                             body=True,
                             trigger="legacy",
                 ),
             ]),
-            dbc.Row([
-                dbc.Col([div_linha2]),
-                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
-                                 style={'width': '20px'}, 
-                                 alt='image'), id="icon-6", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
-                dbc.Popover(
-                            "A predição dos dados de custos de Abril de 2024 indica uma variação significativa entre as horas e valores gastos por consultor. Os valores totais de R$ 10.417,90, R$ 5.691,80 e R$ 9.119,00, com respectivos custos por hora de R$ 71,69, R$ 92,01 e R$ 73,25, refletem uma distribuição desigual de recursos. Isso sugere que a alocação de consultores pode impactar a eficiência dos projetos, exigindo uma revisão estratégica para otimizar a utilização de recursos e reduzir despesas. A discrepância nos custos por hora também pode refletir diferenças na senioridade e experiência dos consultores alocados.",
-                            target="icon-6",
-                            body=True,
-                            trigger="legacy",
-                ),
-            ]),
+
             dbc.Row([
                 dbc.Col([div_barra6]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
@@ -412,7 +381,7 @@ def init_dashboard(server):
                                  style={'width': '20px'}, 
                                  alt='image'), id="icon-11", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
-                            "Analise SOPHIA",
+                            "Os dados indicam diferenças na senioridade das equipes dos projetos. O Projeto 1-Basis tem uma equipe reduzida e menos experiente, com estagiários e juniores, o que sugere menor complexidade nas atividades. Já o Projeto 1-Funcional possui uma equipe maior e mais qualificada, com 25 seniores e 4 experts. O Projeto 2-Funcional apresenta um perfil semelhante, com forte presença de seniores e experts, sugerindo alta demanda por experiência.",
                             target="icon-11",
                             body=True,
                             trigger="legacy",
