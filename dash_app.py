@@ -23,8 +23,11 @@ def init_dashboard(server):
     df_barra3 = pd.read_csv("./dados/Custo x Venda.csv")
     df_barra4 = pd.read_csv("./dados/Consultores x Complexidade de Atendimentos.csv")
     df_barra5 = pd.read_csv("./dados/Atendimentos ao Longo do Tempo.csv")
-    df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo.csv")
+    df_linha = pd.read_csv("./dados/Custo ao Longo do Tempo com projecao.csv")
     df_linha2 = pd.read_csv("./dados/ProjecaoAbril.csv")
+    df_barra6 = pd.read_csv("./dados/Atendimento x Senioridade.csv")
+    df_barra7 = pd.read_csv("./dados/Atendimento_x_Senioridade_PREVISAO.csv")
+    df_barra8 = pd.read_csv("./dados/Equipe por projeto.csv")
 
     # Criação de gráficos
     pizza=px.pie(
@@ -53,7 +56,7 @@ def init_dashboard(server):
                     'Senior': '#22155C',
                     'Expert': '#000024',
         },
-        title="Consultores Ociosos por Senioridade",
+        title="Senioridade de Consultores Ociosos nos últimos 3 meses",
         text_auto=True
     )
     barra1.update_layout(title_x=0.5)
@@ -70,7 +73,7 @@ def init_dashboard(server):
                     'Senior': '#22155C',
                     'Expert': '#000024',
         },
-        title="Contrato x Demanda",
+        title="Contratado x Atendimentos",
         #text_auto=True
     )
     barra2.update_layout(title_x=0.5)
@@ -84,7 +87,7 @@ def init_dashboard(server):
                     'Custo Atendimento': '#a80000',
                     'Valor do Contrato': '#59EE6A'
         },
-        title="Custo x Valor do Contrato em R$"
+        title="Custo dos Atendimentos x Valor do Contrato em R$"
     )
     barra3.update_layout(title_x=0.5)
 
@@ -98,7 +101,7 @@ def init_dashboard(server):
                         'N2': '#6458F0',
                         'N3': '#6DDCF4'
         },
-        title="Consultores x Complexidade de Atendimentos"
+        title="Senioridade dos Consultores x Complexidade dos Atendimentos"
         #text_auto=True
     )
     barra4.update_layout(title_x=0.5)
@@ -113,27 +116,86 @@ def init_dashboard(server):
                         'N2': '#6458F0',
                         'N3': '#6DDCF4'
         },
-        title="Atendimentos ao Longo do Tempo"
+        title="Complexidade dos Atendimentos ao Longo do Tempo"
     )
     barra5.update_layout(title_x=0.5)
+
+    # linha = px.line(
+    #     df_linha,
+    #     x="DATA",
+    #     y="CUSTO",
+    #     title="Custo dos Atendimentos ao Longo do Tempo",
+    # )
+    # linha.update_layout(title_x=0.5)
+    # linha.update_traces(line_color='#a80000')
+
+    linha2 = px.line(
+        df_linha2,
+        x="DATA",
+        y="CUSTO",
+        title="Projeção do Custo dos Atendimentos de Abril",
+    )
+    linha2.update_layout(title_x=0.5)
+    linha2.update_traces(line_color='#AB9EAA')
 
     linha = px.line(
         df_linha,
         x="DATA",
         y="CUSTO",
         title="Custo ao Longo do Tempo",
+        color="TIPO"
     )
     linha.update_layout(title_x=0.5)
-    linha.update_traces(line_color='#a80000')
 
-    linha2 = px.line(
-        df_linha2,
+    #Grafico de Atendimentos por senioridade ao longo do tempo + previsao
+    barra6 = px.bar(
+        df_barra6,
         x="DATA",
-        y="CUSTO",
-        title="Projeção do Custo de Abril",
+        y="ATENDIMENTOS",
+        color="SENIORIDADE",
+        color_discrete_map={
+                        'Estagiário': '#6DDCF4',
+                        'Junior': '#699AF2',
+                        'Pleno': '#7C3C95',
+                        'Senior': '#22155C',
+                        'Expert': '#000024'
+        },
+        title="Atendimentos por Senioridade"
     )
-    linha2.update_layout(title_x=0.5)
-    linha2.update_traces(line_color='#AB9EAA')
+    barra6.update_layout(title_x=0.5)
+
+    barra7 = px.bar(
+        df_barra7,
+        x="DATA",
+        y="ATENDIMENTOS",
+        color="SENIORIDADE",
+        color_discrete_map={
+                        'Estagiário': '#6DDCF4',
+                        'Junior': '#699AF2',
+                        'Pleno': '#7C3C95',
+                        'Senior': '#22155C',
+                        'Expert': '#000024'
+        },
+        title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
+    )
+    barra7.update_layout(title_x=0.5)
+
+    barra8 = px.bar(
+        df_barra8,
+        x="PROJETOS",
+        y="EQUIPE",
+        color="SENIORIDADE",
+        color_discrete_map={
+                        'Estagiário': '#6DDCF4',
+                        'Junior': '#699AF2',
+                        'Pleno': '#7C3C95',
+                        'Senior': '#22155C',
+                        'Expert': '#000024'
+        },
+        title="Equipe por Projeto"
+        #text_auto=True
+    )
+    barra8.update_layout(title_x=0.5)
 
     # Criação das Divs de cada Gráfico
     div_pizza = html.Div([dcc.Graph(id='pizza', figure=pizza)])
@@ -144,6 +206,9 @@ def init_dashboard(server):
     div_barra5 = html.Div([dcc.Graph(id='barra5', figure=barra5)])
     div_linha = html.Div([dcc.Graph(id='linha', figure=linha)])
     div_linha2 = html.Div([dcc.Graph(id='linha2', figure=linha2)])
+    div_barra6 = html.Div([dcc.Graph(id='barra6', figure=barra6)])
+    div_barra7 = html.Div([dcc.Graph(id='barra7', figure=barra7)])
+    div_barra8 = html.Div([dcc.Graph(id='barra8', figure=barra8)])
 
     # Criação do Filtro
     dfFiltro = pd.read_csv("./dados/Lista Projetos.csv")
@@ -227,23 +292,131 @@ def init_dashboard(server):
             ),
             dbc.Row([
                 dbc.Col([div_pizza], md=4),
-                dbc.Col([div_barra4], md=8) #troca cor
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px', 'margin-left':'-20px'}, 
+                                 alt='image'), id="icon-1", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "Nesse gráfico de pizza baseado nos atendimentos dos meses de Janeiro a Março de 2024, observa-se que a maioria dos atendimentos está concentrada em tarefas de menor complexidade (N1), com destaque para o Projeto2-Funcional (230 atendimentos) e Projeto1-Basis (225 atendimentos). No entanto, em termos de maior complexidade (N3), o Projeto2-Funcional também lidera, com 156 atendimentos, enquanto o Projeto1-Funcional soma 112 atendimentos nessa categoria.",
+                            target="icon-1",
+                            body=True,
+                            trigger="legacy",
+                ),
+                dbc.Col([div_barra4], md=7),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-2", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "Nesse gráfico de barras baseado nos atendimentos dos meses de Janeiro a Março de 2024, observa-se que Juniores e Estagiários são responsáveis pela maioria dos atendimentos de complexidade baixa (N1), especialmente no Projeto1-Basis e Projeto2-Funcional. No entanto, Seniores e Experts ganham destaque em tarefas mais complexas (N3), com o Projeto2-Funcional apresentando a maior carga de atendimentos N3, somando 91 atendimentos com profissionais senior e 18 com experts.",
+                            target="icon-2",
+                            body=True,
+                            trigger="legacy",
+                ),
             ]),
             dbc.Row([
-                dbc.Col([div_barra5]) #troca cor
+                dbc.Col([div_barra5]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-3", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "Os projetos Projeto1-Basis e Projeto1-Funcional têm atendimentos constantes de complexidade N1, com picos no início e fim de janeiro e fevereiro. O Projeto2-Funcional também apresenta uma frequência alta de atendimentos N1 no mesmo período. Atendimentos com complexidade N2 são mais frequentes nos últimos dias de fevereiro e início de março, dispersos em várias datas.",
+                            target="icon-3",
+                            body=True,
+                            trigger="legacy",
+                ),
             ]),
             dbc.Row([
-                dbc.Col([div_barra1])
+                dbc.Col([div_barra1]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-4", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "Nos meses de Janeiro a Março, o número de consultores ociosos representou um total de 24 profissionais distribuídos entre diferentes níveis de senioridade. A maior parte dos profissionais sem demandas alocadas concentrou-se na categoria sênior, representando mais da metade do total. Os níveis júnior e pleno seguiram em números mais equilibrados, enquanto estagiários e experts formaram as menores categorias.",
+                            target="icon-4",
+                            body=True,
+                            trigger="legacy",
+                ),
             ]),
             dbc.Row([
-                dbc.Col([div_barra2], md=6),
-                dbc.Col([div_barra3], md=6)
+                dbc.Col([div_barra2], md=5),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px', 'margin-left':'-20px'}, 
+                                 alt='image'), id="icon-9", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "O gráfico Contratado x Atendimentos revela discrepâncias significativas na senioridade dos consultores contratados em relação aos que realmente atuaram nas demandas de cada projeto no período de Janeiro a Março de 2024. Por exemplo, no Projeto 1-Funcional, enquanto 40% dos consultores contratados eram Plenos, apenas 23,26% deles atuaram nas demandas. Da mesma forma, no Projeto 2-Funcional, 50% dos contratados eram Plenos, mas apenas 22,8% estavam presentes nas demandas. Essas diferenças indicam uma subutilização das competências mais avançadas nos projetos, sugerindo uma necessidade de reavaliação no processo de alocação de consultores.",
+                            target="icon-9",
+                            body=True,
+                            trigger="legacy",
+                ),
+                dbc.Col([div_barra3], md=5),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-10", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "Nos meses de Janeiro a Março de 2024, observa-se uma discrepância significativa entre os custos de atendimento e os valores dos contratos em cada projeto. Por exemplo, no Projeto 1-Funcional, o custo de atendimento é de 71.703, enquanto o valor do contrato é de 50.400, resultando em uma diferença negativa de 21.303. Essa situação indica que os custos superam o valor acordado, sugerindo a necessidade de ajustes nos orçamentos e na gestão dos recursos. Além disso, no Projeto 2-Funcional, o custo de atendimento é de 53.782, contra um valor de contrato de 58.800, evidenciando uma margem de lucro mais saudável, mas que ainda requer uma análise detalhada para otimização.",
+                            target="icon-10",
+                            body=True,
+                            trigger="legacy",
+                ),
             ]),
             dbc.Row([
-                dbc.Col([div_linha])
+                dbc.Col([div_linha]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-5", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "O gráfico Custos ao Longo do Tempo revela variações significativas nos gastos. No Projeto 1-Funcional, os custos aumentaram de 1.330 a 2.275 durante o mês de janeiro a março, evidenciando um crescimento contínuo. Por outro lado, o Projeto 1-Basis apresenta custos mais baixos, com flutuações que vão de 6 a 242, indicando um padrão de gastos menos consistente. O Projeto 2-Funcional, por sua vez, também apresenta custos crescentes, atingindo 2.208, o que sugere um aumento na demanda ou complexidade dos serviços prestados ao longo do período analisado.",
+                            target="icon-5",
+                            body=True,
+                            trigger="legacy",
+                ),
             ]),
             dbc.Row([
-                dbc.Col([div_linha2])
+                dbc.Col([div_linha2]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-6", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "A predição dos dados de custos de Abril de 2024 indica uma variação significativa entre as horas e valores gastos por consultor. Os valores totais de R$ 10.417,90, R$ 5.691,80 e R$ 9.119,00, com respectivos custos por hora de R$ 71,69, R$ 92,01 e R$ 73,25, refletem uma distribuição desigual de recursos. Isso sugere que a alocação de consultores pode impactar a eficiência dos projetos, exigindo uma revisão estratégica para otimizar a utilização de recursos e reduzir despesas. A discrepância nos custos por hora também pode refletir diferenças na senioridade e experiência dos consultores alocados.",
+                            target="icon-6",
+                            body=True,
+                            trigger="legacy",
+                ),
+            ]),
+            dbc.Row([
+                dbc.Col([div_barra6]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-7", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "A análise dos atendimentos realizados por diferentes níveis de senioridade entre janeiro e abril de 2024 destaca uma distribuição desigual na alocação de recursos. Os estagiários apresentaram o maior número de atendimentos, com um pico de 15 atendimentos em um único dia, refletindo uma dependência significativa de profissionais menos experientes em projetos funcionais. Por outro lado, os consultores seniores, embora menos frequentemente alocados, participaram ativamente em projetos-chave, o que sugere a necessidade de um equilíbrio na distribuição de tarefas para maximizar a eficiência e a qualidade do trabalho. Essa dinâmica entre as senioridades pode impactar a entrega dos projetos, evidenciando a importância de uma gestão estratégica de recursos humanos.",
+                            target="icon-7",
+                            body=True,
+                            trigger="legacy",
+                ),
+            ]),
+            dbc.Row([
+                dbc.Col([div_barra7]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-8", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "A análise dos dados de atendimentos por senioridade nos projetos prediz uma dependência significativa de Estagiários e Juniores, que em várias datas superarão os atendimentos dos profissionais mais experientes. Em particular, o volume de atendimentos dos estagiários nos projetos se destaca, especialmente em datas como 4 de abril e 2 de junho, onde poderão atingir números elevados. Apesar de Seniores e Plenos realizarem um número considerável de atendimentos, sua atuação pode ser menos frequente, sugerindo que os projetos podem estar se apoiando em uma força de trabalho menos experiente. Essa tendência pode levantar questões sobre a necessidade de um equilíbrio mais adequado entre as diferentes senioridades para garantir a qualidade e a eficiência nas entregas.",
+                            target="icon-8",
+                            body=True,
+                            trigger="legacy",
+                ),
+            ]),
+            dbc.Row([
+                dbc.Col([div_barra8]),
+                dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
+                                 style={'width': '20px'}, 
+                                 alt='image'), id="icon-11", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                dbc.Popover(
+                            "Analise SOPHIA",
+                            target="icon-11",
+                            body=True,
+                            trigger="legacy",
+                ),
             ])
         ])
     ]
@@ -258,7 +431,10 @@ def init_dashboard(server):
             Output('linha', 'figure'),
             Output('barra2', 'figure'),
             Output('barra5', 'figure'),
-            Output('barra3', 'figure')],
+            Output('barra3', 'figure'),
+            Output('barra6', 'figure'),
+            Output('barra7', 'figure'),
+            Output('barra8','figure')],
             [Input('filtro-dropdown', 'value')]
         )
 
@@ -289,7 +465,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Consultores x Complexidade de Atendimentos"
+                                title="Senioridade dos Consultores x Complexidade dos Atendimentos"
                                 #text_auto=True
                             )
                     barra4.update_layout(title_x=0.5)
@@ -304,7 +480,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Atendimentos ao Longo do Tempo"
+                                title="Complexidade dos Atendimentos ao Longo do Tempo"
                             )
                     barra5.update_layout(title_x=0.5)
                 
@@ -320,7 +496,7 @@ def init_dashboard(server):
                                             'Senior': '#22155C',
                                             'Expert': '#000024',
                                 },
-                                title="Contrato x Demanda",
+                                title="Contratado x Atendimentos",
                                 #text_auto=True
                             )
                     barra2.update_layout(title_x=0.5)
@@ -332,19 +508,67 @@ def init_dashboard(server):
                             y="VALOR",
                             color="TIPO",
                             color_discrete_map={'Custo Atendimento': '#a80000','Valor do Contrato': '#59EE6A'},
-                            title="Custo x Valor do Contrato em R$"
+                            title="Custo dos Atendimentos x Valor do Contrato em R$"
                         )
                     barra3.update_layout(title_x=0.5)
 
 
                     linha = px.line(
-                                df_linha,
-                                x="DATA",
-                                y="CUSTO",
-                                title="Custo ao Longo do Tempo",
-                            )
+                        df_linha,
+                        x="DATA",
+                        y="CUSTO",
+                        title="Custo ao Longo do Tempo",
+                        color="TIPO"
+                    )
                     linha.update_layout(title_x=0.5)
-                    linha.update_traces(line_color='#a80000')
+
+                    barra6 = px.bar(
+                        df_barra6,
+                        x="DATA",
+                        y="ATENDIMENTOS",
+                        color="SENIORIDADE",
+                        color_discrete_map={
+                                        'Estagiário': '#6DDCF4',
+                                        'Junior': '#699AF2',
+                                        'Pleno': '#7C3C95',
+                                        'Senior': '#22155C',
+                                        'Expert': '#000024'
+                                    },
+                        title="Atendimentos por Senioridade"
+                            )
+                    barra6.update_layout(title_x=0.5)
+
+                    barra7 = px.bar(
+                        df_barra7,
+                        x="DATA",
+                        y="ATENDIMENTOS",
+                        color="SENIORIDADE",
+                        color_discrete_map={
+                                        'Estagiário': '#6DDCF4',
+                                        'Junior': '#699AF2',
+                                        'Pleno': '#7C3C95',
+                                        'Senior': '#22155C',
+                                        'Expert': '#000024'
+                                    },
+                        title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
+                            )
+                    barra7.update_layout(title_x=0.5)
+
+                    # barra8 = px.bar(
+                    #     df_barra8,
+                    #     x="PROJETOS",
+                    #     y="CONSULTOR",
+                    #     color="Senioridade",
+                    #     color_discrete_map={
+                    #                     'Estagiário': '#6DDCF4',
+                    #                     'Junior': '#699AF2',
+                    #                     'Pleno': '#7C3C95',
+                    #                     'Senior': '#22155C',
+                    #                     'Expert': '#000024'
+                    #                 },
+                    #     title="Consultores por Projeto"
+                    # )
+                    # barra8.update_layout(title_x=0.5)
                 
             else:
                     df_pizza_filtrada = df_pizza.loc[df_pizza['PROJETOS'] == value,:]
@@ -373,7 +597,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Consultores x Complexidade de Atendimentos"
+                                title="Senioridade dos Consultores x Complexidade dos Atendimentos"
                                 #text_auto=True
                             )
                     barra4.update_layout(title_x=0.5)
@@ -389,7 +613,7 @@ def init_dashboard(server):
                                                 'N2': '#6458F0',
                                                 'N3': '#6DDCF4'
                                 },
-                                title="Atendimentos ao Longo do Tempo"
+                                title="Complexidade dos Atendimentos ao Longo do Tempo"
                             )
                     barra5.update_layout(title_x=0.5)
                 
@@ -406,7 +630,7 @@ def init_dashboard(server):
                                             'Senior': '#22155C',
                                             'Expert': '#000024',
                                 },
-                                title="Contrato x Demanda",
+                                title="Contratado x Atendimentos",
                                 #text_auto=True
                             )
                     barra2.update_layout(title_x=0.5)
@@ -419,23 +643,74 @@ def init_dashboard(server):
                             y="VALOR",
                             color="TIPO",
                             color_discrete_map={'Custo Atendimento': '#a80000','Valor do Contrato': '#59EE6A'},
-                            title="Custo x Valor do Contrato em R$"
+                            title="Custo dos Atendimentos x Valor do Contrato em R$"
                         )
                     barra3.update_layout(title_x=0.5)
 
 
                     df_linha_filtrada = df_linha.loc[df_linha['PROJETOS'] == value,:]
                     linha = px.line(
-                                df_linha_filtrada,
-                                x="DATA",
-                                y="CUSTO",
-                                title="Custo ao Longo do Tempo",
-                            )
+                        df_linha_filtrada,
+                        x="DATA",
+                        y="CUSTO",
+                        title="Custo ao Longo do Tempo",
+                        color="TIPO"
+                    )
                     linha.update_layout(title_x=0.5)
-                    linha.update_traces(line_color='#a80000')
+
+                    df_barra6_filtrada = df_barra6.loc[df_barra6['PROJETOS'] == value,:]
+                    barra6 = px.bar(
+                            df_barra6_filtrada,
+                            x="DATA",
+                            y="ATENDIMENTOS",
+                            color="SENIORIDADE",
+                            color_discrete_map={
+                                'Estagiário': '#6DDCF4',
+                                'Junior': '#699AF2',
+                                'Pleno': '#7C3C95',
+                                'Senior': '#22155C',
+                                'Expert': '#000024'
+                            },
+                            title="Atendimentos por Senioridade"
+                        )
+                    barra6.update_layout(title_x=0.5)
+
+                    df_barra7_filtrada = df_barra7.loc[df_barra7['PROJETOS'] == value,:]
+                    barra7 = px.bar(
+                            df_barra7_filtrada,
+                            x="DATA",
+                            y="ATENDIMENTOS",
+                            color="SENIORIDADE",
+                            color_discrete_map={
+                                'Estagiário': '#6DDCF4',
+                                'Junior': '#699AF2',
+                                'Pleno': '#7C3C95',
+                                'Senior': '#22155C',
+                                'Expert': '#000024'
+                            },
+                            title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
+                        )
+                    barra7.update_layout(title_x=0.5)
+
+                    # df_barra8_filtrada = df_barra8.loc[df_barra8['PROJETOS'] == value,:]
+                    # barra8 = px.bar(
+                    #         df_barra8_filtrada,
+                    #         x="PROJETOS",
+                    #         y="CONSULTOR",
+                    #         color="SENIORIDADE",
+                    #         color_discrete_map={
+                    #             'Estagiário': '#6DDCF4',
+                    #             'Junior': '#699AF2',
+                    #             'Pleno': '#7C3C95',
+                    #             'Senior': '#22155C',
+                    #             'Expert': '#000024'
+                    #         },
+                    #         title="Projeção dos Atendimentos por Senioridade nos Próximos 3 Meses"
+                    #     )
+                    # barra8.update_layout(title_x=0.5)
 
 
-            return pizza, barra4, linha, barra2, barra5, barra3
+            return pizza, barra4, linha, barra2, barra5, barra3, barra6, barra7, barra8
             # pass
 
         @app.callback(
@@ -460,6 +735,19 @@ def init_dashboard(server):
                 return {'display': 'block'}, random_phrase, True
             else:
                 return {'display': 'none'}, "", False
+            
+        # @app.callback(
+        #      [Output('details-1', 'style'),
+        #      Output('alert-fade-dupe','children'),
+        #      Output('alert-fade-dupe', 'is_open')],
+        #      Input('icon-1', 'n_clicks')
+        # )
+
+        # def icon(n_clicks):
+        #     if n_clicks:
+        #         return {'display':'block'}, "Hi", True
+        #     else:
+        #          return {'display': 'none'}, "", False
 
         # @app.callback(
         #     Output("alert-fade", "is_open"),
