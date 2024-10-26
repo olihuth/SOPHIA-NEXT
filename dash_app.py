@@ -274,7 +274,7 @@ def init_dashboard(server):
                 dbc.Col([div_pizza], md=4),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px', 'margin-left':'-20px'}, 
-                                 alt='image'), id="icon-1", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-1", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "Nesse gráfico de pizza baseado nos atendimentos dos meses de Janeiro a Março de 2024, observa-se que a maioria dos atendimentos está concentrada em tarefas de menor complexidade (N1), com destaque para o Projeto2-Funcional (230 atendimentos) e Projeto1-Basis (225 atendimentos). No entanto, em termos de maior complexidade (N3), o Projeto2-Funcional também lidera, com 156 atendimentos, enquanto o Projeto1-Funcional soma 112 atendimentos nessa categoria.",
                             target="icon-1",
@@ -284,7 +284,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra4], md=7),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-2", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-2", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "Nesse gráfico de barras baseado nos atendimentos dos meses de Janeiro a Março de 2024, observa-se que Juniores e Estagiários são responsáveis pela maioria dos atendimentos de complexidade baixa (N1), especialmente no Projeto1-Basis e Projeto2-Funcional. No entanto, Seniores e Experts ganham destaque em tarefas mais complexas (N3), com o Projeto2-Funcional apresentando a maior carga de atendimentos N3, somando 91 atendimentos com profissionais senior e 18 com experts.",
                             target="icon-2",
@@ -296,7 +296,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra5]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-3", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-3", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "Os projetos Projeto1-Basis e Projeto1-Funcional têm atendimentos constantes de complexidade N1, com picos no início e fim de janeiro e fevereiro. O Projeto2-Funcional também apresenta uma frequência alta de atendimentos N1 no mesmo período. Atendimentos com complexidade N2 são mais frequentes nos últimos dias de fevereiro e início de março, dispersos em várias datas.",
                             target="icon-3",
@@ -308,7 +308,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra1]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-4", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-4", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "Nos meses de Janeiro a Março, o número de consultores ociosos representou um total de 24 profissionais distribuídos entre diferentes níveis de senioridade. A maior parte dos profissionais sem demandas alocadas concentrou-se na categoria sênior, representando mais da metade do total. Os níveis júnior e pleno seguiram em números mais equilibrados, enquanto estagiários e experts formaram as menores categorias.",
                             target="icon-4",
@@ -320,7 +320,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra2], md=5),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px', 'margin-left':'-20px'}, 
-                                 alt='image'), id="icon-9", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-9", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "O gráfico Contratado x Atendimentos revela discrepâncias significativas na senioridade dos consultores contratados em relação aos que realmente atuaram nas demandas de cada projeto no período de Janeiro a Março de 2024. Por exemplo, no Projeto 1-Funcional, enquanto 40% dos consultores contratados eram Plenos, apenas 23,26% deles atuaram nas demandas. Da mesma forma, no Projeto 2-Funcional, 50% dos contratados eram Plenos, mas apenas 22,8% estavam presentes nas demandas. Essas diferenças indicam uma subutilização das competências mais avançadas nos projetos, sugerindo uma necessidade de reavaliação no processo de alocação de consultores.",
                             target="icon-9",
@@ -330,7 +330,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra3], md=5),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-10", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-10", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "Nos meses de Janeiro a Março de 2024, observa-se uma discrepância significativa entre os custos de atendimento e os valores dos contratos em cada projeto. Por exemplo, no Projeto 1-Funcional, o custo de atendimento é de 71.703, enquanto o valor do contrato é de 50.400, resultando em uma diferença negativa de 21.303. Essa situação indica que os custos superam o valor acordado, sugerindo a necessidade de ajustes nos orçamentos e na gestão dos recursos. Além disso, no Projeto 2-Funcional, o custo de atendimento é de 53.782, contra um valor de contrato de 58.800, evidenciando uma margem de lucro mais saudável, mas que ainda requer uma análise detalhada para otimização.",
                             target="icon-10",
@@ -342,7 +342,7 @@ def init_dashboard(server):
                 dbc.Col([div_linha]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-5", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-5", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "O gráfico Custo ao Longo do Tempo mostra variações nos gastos dos projetos, com o Projeto 1-Funcional aumentando de 1.330 para 2.275 entre janeiro e março, enquanto o Projeto 1-Basis variou entre 6 e 242, mostrando menor consistência. O Projeto 2-Funcional também teve crescimento, alcançando 2.208. Em abril de 2024, a previsão indica distribuição desigual de recursos, com valores totais entre R$ 5.691,80 e R$ 10.417,90, e custos por hora de R$ 71,69 a R$ 92,01, sugerindo diferenças de senioridade e a necessidade de otimizar a alocação.",
                             target="icon-5",
@@ -355,7 +355,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra6]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-7", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-7", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "A análise dos atendimentos realizados por diferentes níveis de senioridade entre janeiro e abril de 2024 destaca uma distribuição desigual na alocação de recursos. Os estagiários apresentaram o maior número de atendimentos, com um pico de 15 atendimentos em um único dia, refletindo uma dependência significativa de profissionais menos experientes em projetos funcionais. Por outro lado, os consultores seniores, embora menos frequentemente alocados, participaram ativamente em projetos-chave, o que sugere a necessidade de um equilíbrio na distribuição de tarefas para maximizar a eficiência e a qualidade do trabalho. Essa dinâmica entre as senioridades pode impactar a entrega dos projetos, evidenciando a importância de uma gestão estratégica de recursos humanos.",
                             target="icon-7",
@@ -367,7 +367,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra7]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-8", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-8", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "A análise dos dados de atendimentos por senioridade nos projetos prediz uma dependência significativa de Estagiários e Juniores, que em várias datas superarão os atendimentos dos profissionais mais experientes. Em particular, o volume de atendimentos dos estagiários nos projetos se destaca, especialmente em datas como 4 de abril e 2 de junho, onde poderão atingir números elevados. Apesar de Seniores e Plenos realizarem um número considerável de atendimentos, sua atuação pode ser menos frequente, sugerindo que os projetos podem estar se apoiando em uma força de trabalho menos experiente. Essa tendência pode levantar questões sobre a necessidade de um equilíbrio mais adequado entre as diferentes senioridades para garantir a qualidade e a eficiência nas entregas.",
                             target="icon-8",
@@ -379,7 +379,7 @@ def init_dashboard(server):
                 dbc.Col([div_barra8]),
                 dbc.Col(html.Button(html.Img(src=r'assets/icons8-mais-60.png', 
                                  style={'width': '20px'}, 
-                                 alt='image'), id="icon-11", style={'border':'none', 'background-color':'white'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
+                                 alt='image'), id="icon-11", style={'border':'none', 'background-color':'#F7F9FB'}), md=1, style={'flex-grow': '0', 'max-width': '20px'}),
                 dbc.Popover(
                             "Os dados indicam diferenças na senioridade das equipes dos projetos. O Projeto 1-Basis tem uma equipe reduzida e menos experiente, com estagiários e juniores, o que sugere menor complexidade nas atividades. Já o Projeto 1-Funcional possui uma equipe maior e mais qualificada, com 25 seniores e 4 experts. O Projeto 2-Funcional apresenta um perfil semelhante, com forte presença de seniores e experts, sugerindo alta demanda por experiência.",
                             target="icon-11",
